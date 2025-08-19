@@ -1,0 +1,110 @@
+ <div class="resume-page">
+      <div class="container">
+        <header class="page-header">
+          <div class="resume-header">
+            <div class="personal-info">
+              <h1 class="name">Your Full Name</h1>
+              <p class="title">Full Stack Developer</p>
+              <div class="contact-info">
+                <span class="contact-item">📧 noursherif619&#64;gmail.com</span>
+                <span class="contact-item">📞 +20 1153715515</span>
+                <span class="contact-item">🌐 yourwebsite.com</span>
+                <span class="contact-item">📍 Cairo, Egypt</span>
+              </div>
+            </div>
+            <div class="resume-actions">
+              <button class="btn btn-primary" (click)="downloadResume()">
+                📄 Download PDF
+              </button>
+              <button class="btn btn-secondary" (click)="printResume()">
+                🖨️ Print
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <section class="professional-summary">
+          <h2 class="section-title">Professional Summary</h2>
+          <div class="summary-content">
+            <p>
+              Passionate Full Stack Developer with {{ yearsOfExperience }}+ years of experience 
+              creating scalable web applications and user-centric solutions. 
+              Expertise in modern JavaScript frameworks, cloud technologies, and agile development methodologies.
+              Proven track record of delivering high-quality projects on time and exceeding client expectations.
+            </p>
+          </div>
+        </section>
+
+        <section class="core-skills">
+          <h2 class="section-title">Core Technical Skills</h2>
+          <div class="skills-categories">
+            <div class="skill-category" *ngFor="let category of skillCategories">
+              <h3 class="category-title">{{ category.name }}</h3>
+              <div class="skills-list">
+                <span class="skill-item" *ngFor="let skill of category.skills">{{ skill }}</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="experience">
+          <h2 class="section-title">Professional Experience</h2>
+          <div class="experience-list">
+            <div class="experience-item" *ngFor="let exp of experiences">
+              <div class="experience-header">
+                <div class="position-info">
+                  <h3 class="position">{{ exp.position }}</h3>
+                  <p class="company">{{ exp.company }}</p>
+                </div>
+                <div class="period">{{ exp.period }}</div>
+              </div>
+              <p class="description">{{ exp.description }}</p>
+              <div class="achievements">
+                <h4 class="achievements-title">Key Achievements:</h4>
+                <ul class="achievements-list">
+                  <li *ngFor="let achievement of exp.achievements">{{ achievement }}</li>
+                </ul>
+              </div>
+              <div class="technologies">
+                <strong>Technologies:</strong>
+                <span class="tech-list">{{ exp.technologies.join(', ') }}</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="education">
+          <h2 class="section-title">Education</h2>
+          <div class="education-list">
+            <div class="education-item" *ngFor="let edu of education">
+              <div class="education-header">
+                <div class="degree-info">
+                  <h3 class="degree">{{ edu.degree }}</h3>
+                  <p class="institution">{{ edu.institution }}</p>
+                </div>
+                <div class="period">{{ edu.period }}</div>
+              </div>
+              <p *ngIf="edu.gpa" class="gpa">GPA: {{ edu.gpa }}</p>
+              <div *ngIf="edu.relevant" class="relevant-coursework">
+                <strong>Relevant Coursework:</strong>
+                <span class="coursework-list">{{ edu.relevant.join(', ') }}</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="certifications">
+          <!-- <h2 class="section-title">Certifications & Awards</h2> -->
+          <div class="certifications-grid">
+            <!-- <div class="cert-item" *ngFor="let cert of certifications">
+              <div class="cert-icon">{{ cert.icon }}</div>
+              <div class="cert-info">
+                <h3 class="cert-title">{{ cert.title }}</h3>
+                <p class="cert-issuer">{{ cert.issuer }}</p>
+                <p class="cert-date">{{ cert.date }}</p>
+              </div>
+            </div> -->
+          </div>
+        </section>
+      </div>
+    </div>

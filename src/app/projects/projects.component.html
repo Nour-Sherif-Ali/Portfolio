@@ -1,0 +1,120 @@
+ <div class="projects-page">
+      <div class="container">
+        <header class="page-header">
+          <h1 class="page-title">My Projects</h1>
+          <p class="page-description">
+            A showcase of my recent work, demonstrating expertise in modern web technologies
+            and creative problem-solving approaches.
+          </p>
+        </header>
+
+        <div class="projects-filter">
+          <button 
+            class="filter-btn"
+            [class.active]="activeFilter === 'all'"
+            (click)="setFilter('all')">
+            All Projects
+          </button>
+          <button 
+            class="filter-btn"
+            [class.active]="activeFilter === 'web'"
+            (click)="setFilter('web')">
+            Web Apps
+          </button>
+          <button 
+            class="filter-btn"
+            [class.active]="activeFilter === 'mobile'"
+            (click)="setFilter('mobile')">
+            Mobile
+          </button>
+          <button 
+            class="filter-btn"
+            [class.active]="activeFilter === 'api'"
+            (click)="setFilter('api')">
+            APIs
+          </button>
+        </div>
+
+        <section class="featured-projects" *ngIf="featuredProjects.length > 0">
+          <h2 class="section-title">Featured Projects</h2>
+          <div class="featured-grid">
+            <div class="featured-project" *ngFor="let project of featuredProjects">
+              <div class="project-image">
+                <img [src]="project.image" [alt]="project.title">
+                <div class="project-overlay">
+                  <div class="project-actions">
+                    <a *ngIf="project.demoUrl" 
+                       [href]="project.demoUrl" 
+                       target="_blank" 
+                       class="btn btn-primary">
+                      🚀 Live Demo
+                    </a>
+                    <a *ngIf="project.githubUrl" 
+                       [href]="project.githubUrl" 
+                       target="_blank" 
+                       class="btn btn-secondary">
+                      💻 Code
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-content">
+                <div class="project-category">{{ project.category }}</div>
+                <h3 class="project-title">{{ project.title }}</h3>
+                <p class="project-description">{{ project.fullDescription }}</p>
+                <div class="project-tech">
+                  <span class="tech-tag" *ngFor="let tech of project.technologies">
+                    {{ tech }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="all-projects">
+          <h2 class="section-title">All Projects</h2>
+          <div class="projects-grid">
+            <div class="project-card" 
+                 *ngFor="let project of filteredProjects"
+                 [class.featured]="project.featured">
+              <div class="project-image">
+                <img [src]="project.image" [alt]="project.title">
+                <div class="project-overlay">
+                  <div class="project-actions">
+                    <a *ngIf="project.demoUrl" 
+                       [href]="project.demoUrl" 
+                       target="_blank" 
+                       class="action-btn">
+                      🚀
+                    </a>
+                    <a *ngIf="project.githubUrl" 
+                       [href]="project.githubUrl" 
+                       target="_blank" 
+                       class="action-btn">
+                      💻
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-content">
+                <div class="project-meta">
+                  <span class="project-category">{{ project.category }}</span>
+                  <span *ngIf="project.featured" class="featured-badge">⭐ Featured</span>
+                </div>
+                <h3 class="project-title">{{ project.title }}</h3>
+                <p class="project-description">{{ project.description }}</p>
+                <div class="project-tech">
+                  <span class="tech-tag" *ngFor="let tech of project.technologies.slice(0, 3)">
+                    {{ tech }}
+                  </span>
+                  <span *ngIf="project.technologies.length > 3" class="tech-more">
+                    +{{ project.technologies.length - 3 }} more
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>

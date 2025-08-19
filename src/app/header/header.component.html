@@ -1,0 +1,31 @@
+ <header class="header" [class.scrolled]="isScrolled">
+      <nav class="nav-container">
+        <div class="nav-brand">
+          <a routerLink="/home" class="brand-link">
+            <span class="brand-text">Portfolio</span>
+          </a>
+        </div>
+        
+        <ul class="nav-menu" [class.active]="isMenuOpen">
+          <li class="nav-item" *ngFor="let item of navItems">
+            <a 
+              [routerLink]="item.path" 
+              class="nav-link"
+              routerLinkActive="active"
+              (click)="closeMenu()"
+            >
+              <i class="nav-icon" [innerHTML]="item.icon"></i>
+              <span>{{ item.label }}</span>
+            </a>
+          </li>
+        </ul>
+        
+        <div class="hamburger" 
+             [class.active]="isMenuOpen" 
+             (click)="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </header>

@@ -1,0 +1,64 @@
+<div class="about-page">
+      <div class="container">
+        <section class="about-hero">
+          <div class="about-content">
+            <div class="about-image">
+              <div class="image-placeholder">
+                <img src = "./peprsonalllll.jpg" alt="Nour's Image" class="profile-image">
+              </div>
+            </div>
+            <div class="about-text">
+              <h1 class="page-title">About Me</h1>
+              <p class="intro-text">
+                I'm a passionate full-stack developer with {{ yearsOfExperience }} years of experience 
+                creating digital solutions that make a difference. I love turning complex problems 
+                into simple, beautiful, and intuitive designs.
+              </p>
+              <p class="description">
+                My journey began with a curiosity for how things work, which led me to 
+                programming. I've since developed expertise in modern web technologies, 
+                always staying current with the latest trends and best practices.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="values">
+          <h2 class="section-title">My Values</h2>
+          <div class="values-grid">
+            <div class="value-card" *ngFor="let value of values">
+              <div class="value-icon">{{ value.icon }}</div>
+              <h3 class="value-title">{{ value.title }}</h3>
+              <p class="value-description">{{ value.description }}</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="journey">
+          <h2 class="section-title">My Journey</h2>
+          <div class="timeline">
+            <div class="timeline-item" *ngFor="let item of timeline">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">{{ item.year }}</div>
+                <h3 class="timeline-title">{{ item.title }}</h3>
+                <p class="timeline-description">{{ item.description }}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="interests">
+          <h2 class="section-title">Beyond Code</h2>
+          <p class="interests-intro">
+            When I'm not coding, you'll find me exploring these passions:
+          </p>
+          <div class="interests-grid">
+            <div class="interest-item" *ngFor="let interest of interests">
+              <span class="interest-icon">{{ interest.icon }}</span>
+              <span class="interest-name">{{ interest.name }}</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>

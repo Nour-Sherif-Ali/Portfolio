@@ -1,0 +1,56 @@
+<section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            Hi, I'm <span class="highlight">Nour</span>
+          </h1>
+          <p class="hero-subtitle">
+            Full Stack Developer & UI/UX Enthusiast
+          </p>
+          <p class="hero-description">
+            I create beautiful, responsive web applications with modern technologies.
+            Passionate about clean code, user experience, and innovative solutions.
+          </p>
+          <div class="hero-actions">
+            <a routerLink="/projects" class="btn btn-primary">
+              View My Work
+            </a>
+            <a routerLink="/contact" class="btn btn-secondary">
+              Get In Touch
+            </a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="image-placeholder">
+            <img src = "./peprsonalllll.jpg" alt="Nour's Image" class="profile-image">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container">
+        <h2 class="section-title">What I Do</h2>
+        <div class="features-grid">
+          <div class="feature-card" *ngFor="let feature of features">
+            <div class="feature-icon">{{ feature.icon }}</div>
+            <h3 class="feature-title">{{ feature.title }}</h3>
+            <p class="feature-description">{{ feature.description }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-content">
+          <h2 class="cta-title">Ready to work together?</h2>
+          <p class="cta-description">
+            Let's create something amazing together. I'm always open to discussing new opportunities.
+          </p>
+          <a routerLink="/contact" class="btn btn-primary">
+            Start a Conversation
+          </a>
+        </div>
+      </div>
+    </section>

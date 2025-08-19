@@ -1,0 +1,58 @@
+<div class="skills-page">
+      <div class="container">
+        <header class="page-header">
+          <h1 class="page-title">Skills & Expertise</h1>
+          <p class="page-description">
+            A comprehensive overview of my technical skills and proficiency levels,
+            continuously evolving with the latest industry trends and technologies.
+          </p>
+        </header>
+
+        <section class="skills-overview">
+          <div class="overview-stats">
+            <div class="stat-card" *ngFor="let stat of overviewStats">
+              <div class="stat-icon">{{ stat.icon }}</div>
+              <div class="stat-number">{{ stat.number }}</div>
+              <div class="stat-label">{{ stat.label }}</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="skills-categories">
+          <div class="category" *ngFor="let category of skillCategories">
+            <h2 class="category-title">{{ category.name }}</h2>
+            <div class="skills-grid">
+              <div class="skill-card" *ngFor="let skill of category.skills">
+                <div class="skill-header">
+                  <div class="skill-info">
+                    <div class="skill-icon">{{ skill.icon }}</div>
+                    <span class="skill-name">{{ skill.name }}</span>
+                  </div>
+                  <span class="skill-percentage">{{ skill.level }}%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" 
+                       [style.width.%]="skill.level"
+                       [class]="'level-' + getSkillLevel(skill.level)">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- <section class="certifications">
+          <h2 class="section-title">Certifications & Learning</h2>
+          <div class="certifications-grid">
+            <div class="certification-card" *ngFor="let cert of certifications">
+              <div class="cert-icon">{{ cert.icon }}</div>
+              <div class="cert-content">
+                <h3 class="cert-title">{{ cert.title }}</h3>
+                <p class="cert-issuer">{{ cert.issuer }}</p>
+                <p class="cert-date">{{ cert.date }}</p>
+              </div>
+            </div>
+          </div>
+        </section> -->
+      </div>
+    </div>

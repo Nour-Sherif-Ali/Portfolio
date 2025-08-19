@@ -1,0 +1,170 @@
+<div class="contact-page">
+      <div class="container">
+        <header class="page-header">
+          <h1 class="page-title">Get In Touch</h1>
+          <p class="page-description">
+            I'd love to hear from you! Whether you have a project in mind, 
+            want to collaborate, or just say hello, feel free to reach out.
+          </p>
+        </header>
+
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="info-section">
+              <h2 class="section-title">Let's Connect</h2>
+              <p class="section-description">
+                I'm always open to discussing new opportunities, interesting projects, 
+                or just having a friendly conversation about technology.
+              </p>
+
+              <div class="contact-methods">
+                <div class="contact-method" *ngFor="let method of contactMethods">
+                  <div class="method-icon">{{ method.icon }}</div>
+                  <div class="method-content">
+                    <h3 class="method-title">{{ method.title }}</h3>
+                    <a [href]="method.link" 
+                       class="method-value" 
+                       [target]="method.external ? '_blank' : ''">
+                      {{ method.value }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="social-section">
+              <h3 class="social-title">Follow Me</h3>
+              <div class="social-links">
+                <a *ngFor="let social of socialLinks" 
+                   [href]="social.url" 
+                   class="social-link"
+                   target="_blank"
+                   [attr.aria-label]="social.name">
+                  <span class="social-icon">{{ social.icon }}</span>
+                  <span class="social-name">{{ social.name }}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-section">
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+              <h2 class="form-title">Send a Message</h2>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName" class="form-label">First Name *</label>
+                  <input 
+                    type="text" 
+                    id="firstName"
+                    formControlName="firstName"
+                    class="form-input"
+                    [class.error]="isFieldInvalid('firstName')"
+                  >
+                  <div *ngIf="isFieldInvalid('firstName')" class="error-message">
+                    First name is required
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="lastName" class="form-label">Last Name *</label>
+                  <input 
+                    type="text" 
+                    id="lastName"
+                    formControlName="lastName"
+                    class="form-input"
+                    [class.error]="isFieldInvalid('lastName')"
+                  >
+                  <div *ngIf="isFieldInvalid('lastName')" class="error-message">
+                    Last name is required
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">Email Address *</label>
+                <input 
+                  type="email" 
+                  id="email"
+                  formControlName="email"
+                  class="form-input"
+                  [class.error]="isFieldInvalid('email')"
+                >
+                <div *ngIf="isFieldInvalid('email')" class="error-message">
+                  <span *ngIf="contactForm.get('email')?.errors?.['required']">Email is required</span>
+                  <span *ngIf="contactForm.get('email')?.errors?.['email']">Please enter a valid email</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="subject" class="form-label">Subject *</label>
+                <select 
+                  id="subject"
+                  formControlName="subject"
+                  class="form-input"
+                  [class.error]="isFieldInvalid('subject')"
+                >
+                  <option value="">Select a subject</option>
+                  <option value="project">Project Inquiry</option>
+                  <option value="collaboration">Collaboration</option>
+                  <option value="job">Job Opportunity</option>
+                  <option value="consultation">Consultation</option>
+                  <option value="other">Other</option>
+                </select>
+                <div *ngIf="isFieldInvalid('subject')" class="error-message">
+                  Please select a subject
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="form-label">Message *</label>
+                <textarea 
+                  id="message"
+                  formControlName="message"
+                  rows="6"
+                  class="form-input form-textarea"
+                  placeholder="Tell me about your project, ideas, or just say hello..."
+                  [class.error]="isFieldInvalid('message')"
+                ></textarea>
+                <div *ngIf="isFieldInvalid('message')" class="error-message">
+                  Message is required
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button 
+                  type="submit" 
+                  class="btn btn-primary"
+                  [disabled]="isSubmitting || contactForm.invalid"
+                  [class.loading]="isSubmitting"
+                >
+                  <span *ngIf="!isSubmitting">✉️ Send Message</span>
+                  <span *ngIf="isSubmitting">🔄 Sending...</span>
+                </button>
+              </div>
+
+              <div *ngIf="submitMessage" 
+                   class="submit-message"
+                   [class.success]="submitSuccess"
+                   [class.error]="!submitSuccess">
+                {{ submitMessage }}
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="availability">
+          <div class="availability-content">
+            <h2 class="availability-title">Currently Available</h2>
+            <p class="availability-description">
+              I'm actively looking for new opportunities and interesting projects. 
+              Let's discuss how we can work together!
+            </p>
+            <div class="availability-status">
+              <div class="status-indicator"></div>
+              <span class="status-text">Available for new projects</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
